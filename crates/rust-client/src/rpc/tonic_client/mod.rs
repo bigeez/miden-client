@@ -568,7 +568,7 @@ impl NodeRpcClient for GrpcClient {
 
             Some(MmrProof::new(
                 MmrPath::new(
-                    Forest::new(usize::try_from(forest).expect("u64 should fit in usize")),
+                    Forest::new(usize::try_from(forest).map_err(RpcConversionError::from)?),
                     block_header.block_num().as_usize(),
                     merkle_path,
                 ),
