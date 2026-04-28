@@ -11,6 +11,7 @@
 ### Bug Fixes
 
 * Fixed panics in `NoteMetadata` and `NoteHeader` RPC conversions when protobuf `note_type` field contains a negative `i32` value, by replacing `.expect()` with proper `?` error propagation.
+* Fixed panic in `get_block_header_by_number` when converting protobuf `chain_length` field from `u64` to `usize` on 32-bit targets, by replacing `.expect()` with proper `RpcConversionError` propagation.
 
 ### Enhancements
 
